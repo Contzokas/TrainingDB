@@ -44,7 +44,8 @@ CREATE TABLE OFFERING (
     OfferingType VARCHAR(50),
     TotalHours INT,
     TeacherID INT,
-    FOREIGN KEY (CourseID) REFERENCES Course(CourseID)
+    FOREIGN KEY (CourseID) REFERENCES Course(CourseID),
+    Grade VARCHAR(10)
 );
 
 CREATE TABLE EMPLOYEE_TEACHER (
@@ -65,7 +66,7 @@ CREATE TABLE TRAINEE_COURSE (
     EnrollmentDate DATE NOT NULL,
     FinalGrade VARCHAR(10),
     PRIMARY KEY (TraineeID, CourseID),
-    FOREIGN KEY (TraineeID) REFERENCES EmployeeTrainee(EmployeeID),
+    FOREIGN KEY (TraineeID) REFERENCES EMPLOYEE_TRAINEE(EmployeeID),
     FOREIGN KEY (CourseID) REFERENCES Course(CourseID)
 );
 
@@ -149,23 +150,23 @@ VALUES
 (14, 'Public Speaking', 20, 'Mastering the art of speaking'),
 (15, 'Time Management', 15, 'Enhancing productivity');
 
-INSERT INTO OFFERING (OfferingID, CourseID, OfferingName, OfferingType, TotalHours, TeacherID)
+INSERT INTO OFFERING (OfferingID, CourseID, OfferingName, OfferingType, TotalHours, TeacherID, Grade)
 VALUES
-(1, 1, 'Data Science Bootcamp', 'Online', 40, 1),
-(2, 2, 'Python Advanced Workshop', 'In-person', 60, 2),
-(3, 3, 'Cybersecurity for Beginners', 'Online', 50, 3),
-(4, 4, 'Cloud Essentials', 'Hybrid', 45, 4),
-(5, 5, 'DevOps Masterclass', 'Online', 55, 5),
-(6, 6, 'UI/UX Fundamentals', 'In-person', 30, 6),
-(7, 7, 'Digital Marketing Basics', 'Online', 35, 7),
-(8, 8, 'Agile Project Management', 'Hybrid', 40, 8),
-(9, 9, 'SQL for Professionals', 'Online', 50, 9),
-(10, 10, 'AI and ML Foundations', 'In-person', 60, 10),
-(11, 11, 'Business Analytics Pro', 'Online', 50, 11),
-(12, 12, 'Leadership Essentials', 'Hybrid', 30, 12),
-(13, 13, 'Negotiation Mastery', 'In-person', 25, 13),
-(14, 14, 'Public Speaking Seminar', 'Online', 20, 14),
-(15, 15, 'Productivity Hacks', 'Hybrid', 15, 15);
+(1, 1, 'Data Science Bootcamp', 'Online', 40, 1, 'A'),
+(2, 2, 'Python Advanced Workshop', 'In-person', 60, 2, 'B'),
+(3, 3, 'Cybersecurity for Beginners', 'Online', 50, 3, 'A'),
+(4, 4, 'Cloud Essentials', 'Hybrid', 45, 4, 'A-'),
+(5, 5, 'DevOps Masterclass', 'Online', 55, 5, 'B+'),
+(6, 6, 'UI/UX Fundamentals', 'In-person', 30, 6, 'A'),
+(7, 7, 'Digital Marketing Basics', 'Online', 35, 7, 'B'),
+(8, 8, 'Agile Project Management', 'Hybrid', 40, 8,'A'),
+(9, 9, 'SQL for Professionals', 'Online', 50, 9, 'A+'),
+(10, 10, 'AI and ML Foundations', 'In-person', 60, 10, 'A'),
+(11, 11, 'Business Analytics Pro', 'Online', 50, 11, 'B'),
+(12, 12, 'Leadership Essentials', 'Hybrid', 30, 12, 'B+'),
+(13, 13, 'Negotiation Mastery', 'In-person', 25, 13, 'A'),
+(14, 14, 'Public Speaking Seminar', 'Online', 20, 14, 'A-'),
+(15, 15, 'Productivity Hacks', 'Hybrid', 15, 15, 'A+');
 
 INSERT INTO EMPLOYEE_TEACHER (EmployeeID, SubjectSpecialization)
 VALUES
